@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SNAPROOM — your little photobooth</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="hdr">
+  <a class="logo" href="#home" data-go="home"><b>SNAPROOM</b><small>your little photobooth</small></a>
+  <button class="btn burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 5h14M3 10h14M3 15h14"/></svg></button>
+  <nav id="nav" aria-label="Main">
+    <a href="#home" data-go="home">Home</a>
+    <a href="#frames" data-go="frames">Frames</a>
+    <a href="#how" data-go="how">How It Works</a>
+    <button class="btn pri" data-start>Start Photobooth</button>
+  </nav>
+</header>
+
+<main>
+<div id="v-landing">
+  <section id="home" class="wrap hero">
+    <div>
+      <h1>Your Moments, Your Photostrip.</h1>
+      <p>Capture your favorite moments and turn them into a little strip of memories.</p>
+      <div class="row">
+        <button class="btn pri" data-start>Start Photo Session</button>
+        <a class="btn" href="#frames" data-go="frames">Explore Frames</a>
+      </div>
+    </div>
+    <div class="mock" aria-hidden="true"><i></i><i></i><i></i><i></i><p>SNAPROOM</p></div>
+  </section>
+
+  <section id="frames" class="wrap">
+    <h2>Pick a frame</h2>
+    <p class="sub">Tap a card to choose. Your frame is used on the final photostrip.</p>
+    <div class="grid" id="gal"></div>
+  </section>
+
+  <section id="how" class="wrap">
+    <h2>How it works</h2>
+    <div class="steps">
+      <div class="step"><h3>1. Choose</h3><p>Pick a frame, how many photos, and the countdown.</p></div>
+      <div class="step"><h3>2. Smile</h3><p>Allow the camera and we take the photos automatically.</p></div>
+      <div class="step"><h3>3. Download</h3><p>Add a filter, tweak the footer, and save a PNG.</p></div>
+    </div>
+    <p class="sub">Camera access is required. Photos stay in your browser and are never uploaded.</p>
+  </section>
+</div>
+
+<section id="v-studio" class="wrap" hidden>
+  <h2>Studio</h2>
+  <p class="sub" id="frameInfo"></p>
+  <div class="stage" id="stage">
+    <video id="vid" playsinline muted autoplay></video>
+    <div id="cd" class="cd" aria-live="assertive"></div>
+    <div id="flash" class="flash"></div>
+    <div id="msg" class="msg" role="alert"><h3 id="msgT"></h3><p id="msgP"></p><button class="btn pri" id="retry">Try Again</button></div>
+  </div>
+  <div class="dots" id="dots" aria-hidden="true"></div>
+  <p id="status" class="status" role="status" aria-live="polite"></p>
+  <fieldset><legend>Photos per session</legend><div class="chips" id="cCount" data-key="count"></div></fieldset>
+  <fieldset><legend>Countdown</legend><div class="chips" id="cCd" data-key="cd"></div></fieldset>
+  <label class="chk"><input type="checkbox" id="oMirror" checked> Mirror front camera</label>
+  <div class="row">
+    <button class="btn pri big" id="take">Take Photos</button>
+    <button class="btn" id="cancel" hidden>Cancel</button>
+    <button class="btn" id="switch">Switch Camera</button>
+    <button class="btn" id="back">Back to Frames</button>
+  </div>
+</section>
+
+<section id="v-result" class="wrap res" hidden>
+  <div class="pv" id="pv" role="button" tabindex="0" aria-label="Photostrip preview. Press to enlarge."><canvas id="out"></canvas></div>
+  <div>
+    <h2>Your photostrip is ready</h2>
+    <p class="sub" id="rmeta"></p>
+    <div class="row"><button class="btn pri big" id="dl">Download PNG</button></div>
+    <fieldset><legend>Filter</legend><div class="chips" id="cFilter" data-key="filter"></div></fieldset>
+    <label class="chk"><input type="checkbox" id="oDate" checked> Show date</label>
+    <label class="chk"><input type="checkbox" id="oName" checked> Show frame name</label>
+    <label class="chk"><input type="checkbox" id="oDeco" checked> Decorations</label>
+    <label for="oFooter">Footer text</label>
+    <input type="text" id="oFooter" maxlength="28" autocomplete="off">
+    <div class="row">
+      <button class="btn" id="retakeAll">Retake All</button>
+      <button class="btn" id="retakeOne">Retake Photo</button>
+      <button class="btn" id="chFrame">Change Frame</button>
+      <button class="btn" id="newSess">Start New Session</button>
+    </div>
+    <div class="thumbs" id="thumbs" hidden></div>
+    <div class="grid" id="gal2" hidden></div>
+    <p id="fb" class="status" role="status"></p>
+  </div>
+</section>
+</main>
+
+<footer class="foot">SNAPROOM · photos never leave your device</footer>
+<script src="script.js"></script>
+</body>
+</html>
